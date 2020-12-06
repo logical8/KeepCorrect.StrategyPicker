@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+
+        <IsPackable>false</IsPackable>
+
+        <OutputType>Library</OutputType>
+
+        <TargetFrameworks>net461;netstandard2.1;netcoreapp5.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.12.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StrategyPicker\StrategyPicker.csproj" />
+    </ItemGroup>
+
+</Project>
