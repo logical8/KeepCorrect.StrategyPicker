@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPicker", "StrategyPicker\StrategyPicker.csproj", "{4B0AEF7C-D2A6-4183-B0B8-1D266B854C0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepCorrect.StrategyPicker", "KeepCorrect.StrategyPicker\KeepCorrect.StrategyPicker.csproj", "{4B0AEF7C-D2A6-4183-B0B8-1D266B854C0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPickerTests", "StrategyPickerTests\StrategyPickerTests.csproj", "{2D6513C9-EF67-4C68-92FD-0C35A75C552C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepCorrect.StrategyPickerTests", "KeepCorrect.StrategyPickerTests\KeepCorrect.StrategyPickerTests.csproj", "{2D6513C9-EF67-4C68-92FD-0C35A75C552C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

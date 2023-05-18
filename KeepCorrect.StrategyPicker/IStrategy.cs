@@ -1,4 +1,4 @@
-﻿namespace StrategyPicker
+﻿namespace KeepCorrect.StrategyPicker
 {
     public interface IStrategy
     {

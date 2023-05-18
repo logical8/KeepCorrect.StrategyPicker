@@ -1,6 +1,6 @@
-﻿using StrategyPicker;
+﻿using KeepCorrect.StrategyPicker;
 
-namespace StrategyPickerTests.ExampleImplementation
+namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
 {
     public interface ITestStrategy : IStrategyWithDefault
     {

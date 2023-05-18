@@ -1,6 +1,6 @@
 ﻿using System;
 
- namespace StrategyPicker
+ namespace KeepCorrect.StrategyPicker
 {
     public interface IStrategyPicker<in T>
     {

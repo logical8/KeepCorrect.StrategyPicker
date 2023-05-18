@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace StrategyPicker
+namespace KeepCorrect.StrategyPicker
 {
     public sealed class Factory<T, TStrategyPicker> : IFactory<T, TStrategyPicker> where T : IStrategy
         where TStrategyPicker : IStrategyPicker<T>

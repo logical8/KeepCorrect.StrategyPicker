@@ -1,4 +1,4 @@
-﻿namespace StrategyPickerTests.ExampleImplementation
+﻿namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
 {
     public class TestStrategy2 : ITestStrategy
     {

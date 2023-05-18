@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using KeepCorrect.StrategyPicker;
+using KeepCorrect.StrategyPickerTests.ExampleImplementation;
 using NUnit.Framework;
-using StrategyPicker;
-using StrategyPickerTests.ExampleImplementation;
 
-namespace StrategyPickerTests
+namespace KeepCorrect.StrategyPickerTests
 {
     public class FactoryTests
     {

@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-
+        <TargetFramework>net6.0</TargetFramework>
         <IsPackable>false</IsPackable>
-
         <OutputType>Library</OutputType>
-
-        <TargetFrameworks>net461;netstandard2.1;netcoreapp5.0</TargetFrameworks>
+        <LangVersion>latestmajor</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StrategyPicker\StrategyPicker.csproj" />
+      <ProjectReference Include="..\KeepCorrect.StrategyPicker\KeepCorrect.StrategyPicker.csproj" />
     </ItemGroup>
 
 </Project>
