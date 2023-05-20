@@ -6,6 +6,6 @@
         public Criterion1Enum? Criterion1 { get; }
         public Criterion2Enum? Criterion2 { get; }
         public Criterion3Enum? Criterion3 { get; }
-        public StrategyTypeEnum StrategyType { get; } = StrategyTypeEnum.Default;
+        public StrategyTypeEnum StrategyType => StrategyTypeEnum.Default;
     }
 }
