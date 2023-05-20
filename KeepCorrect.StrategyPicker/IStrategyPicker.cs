@@ -2,13 +2,17 @@
 
  namespace KeepCorrect.StrategyPicker
 {
-    public interface IStrategyPicker<in T>
+    /// <summary>
+    /// Picker that khows by what criterions strategy can be picked 
+    /// </summary>
+    /// <typeparam name="TStrategy"></typeparam>
+    public interface IStrategyPicker<in TStrategy>
     {
         /// <summary>
         /// Conditions for choosing the required instance of the strategy
         /// </summary>
         /// <returns></returns>
-        Func<T, bool> GetConditionsPredicate();
+        Func<TStrategy, bool> GetConditionsPredicate();
     }
     
     //Example implimentation:

@@ -1,4 +1,4 @@
-﻿namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
+﻿namespace KeepCorrect.StrategyPickerTests.ExampleImplementation.MultipleCriteria
 {
     public class TestStrategy3 : ITestStrategy
     {

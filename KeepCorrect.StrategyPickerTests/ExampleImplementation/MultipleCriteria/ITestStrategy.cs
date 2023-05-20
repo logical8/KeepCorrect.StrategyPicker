@@ -1,6 +1,6 @@
 ﻿using KeepCorrect.StrategyPicker;
 
-namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
+namespace KeepCorrect.StrategyPickerTests.ExampleImplementation.MultipleCriteria
 {
     public interface ITestStrategy : IStrategyWithDefault
     {
