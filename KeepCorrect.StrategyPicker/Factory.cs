@@ -1,13 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using KeepCorrect.StrategyPicker.Exceptions;
 
 namespace KeepCorrect.StrategyPicker
 {
     public sealed class Factory<T> : IFactory<T> where T : IStrategy
     {
-        private readonly T[] _strategies;
+        private readonly IEnumerable<T> _strategies;
 
-        public Factory(T[] strategies)
+        public Factory(IEnumerable<T> strategies)
         {
             _strategies = strategies;
         }
@@ -22,9 +23,9 @@ namespace KeepCorrect.StrategyPicker
 
     public sealed class FactoryWithDefault<T> : IFactoryWithDefault<T> where T : IStrategyWithDefault
     {
-        private readonly T[] _strategies;
+        private readonly IEnumerable<T> _strategies;
 
-        public FactoryWithDefault(T[] strategies)
+        public FactoryWithDefault(IEnumerable<T> strategies)
         {
             _strategies = strategies;
         }
