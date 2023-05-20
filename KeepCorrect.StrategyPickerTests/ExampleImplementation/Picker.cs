@@ -3,11 +3,7 @@ using KeepCorrect.StrategyPicker;
 
 namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
 {
-    public interface IPicker : IStrategyPicker<ITestStrategy>
-    {
-    }
-
-    public class Picker : IPicker
+    public class Picker : IStrategyPicker<ITestStrategy>
     {
         public Picker(Criterion1Enum criterion1, Criterion2Enum criterion2, Criterion3Enum criterion3)
         {
@@ -32,7 +28,7 @@ namespace KeepCorrect.StrategyPickerTests.ExampleImplementation
         }
     }
     
-    public class Picker2 : IPicker
+    public class Picker2 : IStrategyPicker<ITestStrategy>
     {
         public Picker2(Criterion1Enum criterion1, Criterion2Enum criterion2, Criterion3Enum criterion3)
         {

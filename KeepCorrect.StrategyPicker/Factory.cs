@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using KeepCorrect.StrategyPicker.Exceptions;
 
 namespace KeepCorrect.StrategyPicker
 {
-    public sealed class Factory<T, TStrategyPicker> : IFactory<T, TStrategyPicker> where T : IStrategy
-        where TStrategyPicker : IStrategyPicker<T>
+    public sealed class Factory<T> : IFactory<T> where T : IStrategy
     {
         private readonly T[] _strategies;
 
@@ -13,18 +12,15 @@ namespace KeepCorrect.StrategyPicker
             _strategies = strategies;
         }
 
-        public T GetStrategy(TStrategyPicker strategyPicker)
+        public T GetStrategy(IStrategyPicker<T> strategyPicker)
         {
             var strategy = _strategies.FirstOrDefault(strategyPicker.GetConditionsPredicate());
-            if (strategy == null)
-                throw new NotImplementedException(
-                    $"Factory instance not implemented for {typeof (TStrategyPicker)}: {strategyPicker}, or dependencies not registered");
+            if (strategy == null) throw new StrategyIsNotImplementedException<T>(strategyPicker);
             return strategy;
         }
     }
-    
-    public sealed class FactoryWithDefault<T, TStrategyPicker> : IFactoryWithDefault<T, TStrategyPicker> where T : IStrategyWithDefault
-        where TStrategyPicker : IStrategyPicker<T>
+
+    public sealed class FactoryWithDefault<T> : IFactoryWithDefault<T> where T : IStrategyWithDefault
     {
         private readonly T[] _strategies;
 
@@ -32,17 +28,13 @@ namespace KeepCorrect.StrategyPicker
         {
             _strategies = strategies;
         }
-        
-        public T GetStrategyWithDefault(TStrategyPicker strategyPicker)
+
+        public T GetStrategyWithDefault(IStrategyPicker<T> strategyPicker)
         {
             var strategy = _strategies.FirstOrDefault(strategyPicker.GetConditionsPredicate());
-            if (strategy == null)
-            {
-                strategy = _strategies.FirstOrDefault(s => s.IsDefault);
-                if (strategy == null)
-                    throw new NotImplementedException(
-                        $"Factory instance not implemented for {typeof (TStrategyPicker)}: {strategyPicker}, or dependencies not registered");
-            }
+            if (strategy != null) return strategy;
+            strategy = _strategies.FirstOrDefault(s => s.IsDefault);
+            if (strategy == null) throw new StrategyIsNotImplementedException<T>(strategyPicker);
             return strategy;
         }
     }

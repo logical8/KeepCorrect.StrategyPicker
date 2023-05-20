@@ -7,8 +7,8 @@ namespace KeepCorrect.StrategyPickerTests
 {
     public class FactoryTests
     {
-        private IFactory<ITestStrategy, IPicker> _factory;
-        private IFactoryWithDefault<ITestStrategy, IPicker> _factoryWithDefault;
+        private IFactory<ITestStrategy> _factory;
+        private IFactoryWithDefault<ITestStrategy> _factoryWithDefault;
         
         [SetUp]
         public void Setup()
@@ -29,8 +29,8 @@ namespace KeepCorrect.StrategyPickerTests
                 new TestStrategy4(),
                 new TestStrategy3()
             };
-            _factory = new Factory<ITestStrategy, IPicker>(strategies);
-            _factoryWithDefault = new FactoryWithDefault<ITestStrategy, IPicker>(strategiesWithDefault);
+            _factory = new Factory<ITestStrategy>(strategies);
+            _factoryWithDefault = new FactoryWithDefault<ITestStrategy>(strategiesWithDefault);
         }
         
         private static IEnumerable<TestCaseData> Cases
