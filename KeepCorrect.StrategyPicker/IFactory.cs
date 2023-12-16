@@ -1,4 +1,6 @@
-﻿namespace KeepCorrect.StrategyPicker
+﻿using System;
+
+namespace KeepCorrect.StrategyPicker
 {
     /// <summary>
     /// Factory that returns strategy using strategy picker implementation.
@@ -13,6 +15,12 @@
         /// <param name="strategyPicker"></param>
         /// <returns></returns>
         TStrategy GetStrategy(IStrategyPicker<TStrategy> strategyPicker);
+
+        /// <summary>
+        /// Get an instance of a strategy using the conditions predicate
+        /// </summary>
+        /// <returns></returns>
+        TStrategy GetStrategy(Func<TStrategy, bool> conditionsPredicate);
     }
     
     /// <summary>

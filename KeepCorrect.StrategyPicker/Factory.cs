@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using KeepCorrect.StrategyPicker.Exceptions;
 
@@ -16,7 +17,13 @@ namespace KeepCorrect.StrategyPicker
         public T GetStrategy(IStrategyPicker<T> strategyPicker)
         {
             var strategy = _strategies.FirstOrDefault(strategyPicker.GetConditionsPredicate());
-            if (strategy == null) throw new StrategyIsNotImplementedException<T>(strategyPicker);
+            if (strategy == null) throw new StrategyNotImplementedException<T>(strategyPicker);
+            return strategy;
+        }
+        public T GetStrategy(Func<T, bool> conditionsPredicate)
+        {
+            var strategy = _strategies.FirstOrDefault(conditionsPredicate);
+            if (strategy == null) throw new StrategyNotFoundByConditionsException<T>(conditionsPredicate);
             return strategy;
         }
     }
@@ -52,7 +59,7 @@ namespace KeepCorrect.StrategyPicker
             var strategy = _strategies.FirstOrDefault(strategyPicker.GetConditionsPredicate());
             if (strategy != null) return strategy;
             strategy = _strategies.FirstOrDefault(s => s.IsDefault);
-            if (strategy == null) throw new StrategyIsNotImplementedException<T>(strategyPicker);
+            if (strategy == null) throw new StrategyNotImplementedException<T>(strategyPicker);
             return strategy;
         }
     }

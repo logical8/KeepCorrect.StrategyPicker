@@ -246,5 +246,20 @@ namespace KeepCorrect.StrategyPickerTests
             var result = _factoryWithDefault.GetStrategyWithDefault(new Picker2(criterion1, criterion2, criterion3));
             Assert.That(result.StrategyType, Is.EqualTo(expectedStrategyType));
         }
+        
+        [TestCaseSource(nameof(Cases))]
+        public void TestConditionPredicate(Criterion1Enum criterion1,
+            Criterion2Enum criterion2,
+            Criterion3Enum criterion3,
+            StrategyTypeEnum expectedStrategyType)
+        {
+            var result = _factory.GetStrategy(f =>
+                f.Criterion1 == criterion1 && f.Criterion2 == criterion2 && f.Criterion3 == criterion3
+                ||
+                f.Criterion1 == criterion1 && f.Criterion2 == criterion2 && f.Criterion3 == null
+                ||
+                f.Criterion1 == null && f.Criterion2 == criterion2 && f.Criterion3 == null);
+            Assert.That(result.StrategyType, Is.EqualTo(expectedStrategyType));
+        }
     }
 }
