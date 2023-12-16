@@ -19,10 +19,14 @@ namespace KeepCorrect.StrategyPicker
         /// <summary>
         /// Get an instance of a strategy using the conditions predicate
         /// </summary>
+        /// <param name="conditionsPredicate">Searching conditions predicate</param>
+        /// <param name="throwExceptionIfNotFound">If true – throws an exception if no one element satisfies the condition</param>
+        /// <param name="mustBeSingle">If true – throws an exception if more than one element satisfies the condition</param>
         /// <returns></returns>
-        TStrategy GetStrategy(Func<TStrategy, bool> conditionsPredicate);
+        public TStrategy GetStrategy(Func<TStrategy, bool> conditionsPredicate, bool throwExceptionIfNotFound = true,
+            bool mustBeSingle = true);
     }
-    
+
     /// <summary>
     /// Simple factory that returns strategy using strategy type.
     /// Use this when you need to choose strategy by single criterion (usually some Enum)

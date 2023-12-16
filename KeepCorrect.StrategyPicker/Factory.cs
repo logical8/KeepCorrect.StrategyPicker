@@ -20,11 +20,16 @@ namespace KeepCorrect.StrategyPicker
             if (strategy == null) throw new StrategyNotImplementedException<T>(strategyPicker);
             return strategy;
         }
-        public T GetStrategy(Func<T, bool> conditionsPredicate)
+
+        public T GetStrategy(Func<T, bool> conditionsPredicate, bool throwExceptionIfNotFound,
+            bool mustBeSingle)
         {
-            var strategy = _strategies.FirstOrDefault(conditionsPredicate);
-            if (strategy == null) throw new StrategyNotFoundByConditionsException<T>(conditionsPredicate);
-            return strategy;
+            var strategy = mustBeSingle
+                ? _strategies.SingleOrDefault(conditionsPredicate)
+                : _strategies.FirstOrDefault(conditionsPredicate);
+            if (strategy != null) return strategy;
+            if (throwExceptionIfNotFound) throw new StrategyNotFoundByConditionsException<T>(conditionsPredicate);
+            return default;
         }
     }
 
