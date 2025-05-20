@@ -6,18 +6,29 @@ namespace KeepCorrect.StrategyPicker.Extensions;
 
 public static class StrategyPickerExtensions
 {
+    /// <summary>
+    /// Adds the strategy picker to the specified service collection.
+    /// </summary>
+    /// <param name="services">The service collection to add the strategy picker to.</param>
+    /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddStrategyPicker(this IServiceCollection services) =>
         services.AddStrategyPicker(_ => { });
 
+    /// <summary>
+    /// Adds the strategy picker to the specified service collection.
+    /// </summary>
+    /// <param name="services">The service collection to add the strategy picker to.</param>
+    /// <param name="configure">The action to configure the strategy picker builder.</param>
+    /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddStrategyPicker(this IServiceCollection services,
         Action<IStrategyPickerBuilder> configure)
     {
         if (services == null)
             throw new ArgumentNullException(nameof(services));
-        services.TryAdd(ServiceDescriptor.Singleton(typeof(IFactory<>), typeof(Factory<>)));
-        services.TryAdd(ServiceDescriptor.Singleton(typeof(IFactory<,>), typeof(Factory<,>)));
-        services.TryAdd(ServiceDescriptor.Singleton(typeof(IFactoryWithDefault<>), typeof(FactoryWithDefault<>)));
-        services.TryAdd(ServiceDescriptor.Singleton(typeof(IFactoryWithDefault<,>), typeof(FactoryWithDefault<,>)));
+        services.TryAdd(ServiceDescriptor.Scoped(typeof(IFactory<>), typeof(Factory<>)));
+        services.TryAdd(ServiceDescriptor.Scoped(typeof(IFactory<,>), typeof(Factory<,>)));
+        services.TryAdd(ServiceDescriptor.Scoped(typeof(IFactoryWithDefault<>), typeof(FactoryWithDefault<>)));
+        services.TryAdd(ServiceDescriptor.Scoped(typeof(IFactoryWithDefault<,>), typeof(FactoryWithDefault<,>)));
         configure(new StrategyPickerBuilder(services));
         return services;
     }
